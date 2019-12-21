@@ -1,0 +1,25 @@
+.footer {
+  background: #f9f9f9;
+  bottom: 0;
+  width: 100%;
+}
+.social-media {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.copyright {
+  margin-top: 14px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.footer__icons {
+  padding: 14px;
+  font-size: 26px;
+}
+
+.footer__icons:hover {
+    color: #88c8bc;
+    cursor: pointer;
+}

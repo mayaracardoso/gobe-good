@@ -1,0 +1,81 @@
+.top-menu {
+  padding: 10px 0;
+}
+
+.logo {
+  transform: scale(0.8);
+}
+
+.header .top-menu .search-wrap .search {
+  height: 40px;
+  padding-left: 1em;
+  padding-right: 4.5em;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  border-radius: 30px;
+}
+
+.header .top-menu .search-wrap .submit-search {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 0;
+  right: 15px;
+  padding: 0;
+  background: #88c8bc;
+  border: 1px solid #88c8bc;
+  border-radius: 20px;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header__icons {
+  font-size: 20px;
+}
+
+.menu {
+  float: right;
+  margin-top: 30px;
+}
+
+.menu ul li {
+  display: inline-block;
+  margin-left: 60px;
+  position: relative;
+}
+
+.menu ul li a {
+  color: #1e1e1e;
+  font-size: 18px;
+  display: inline-block;
+  font-weight: 500;
+  position: relative;
+  line-height: 42px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header-info {
+  background: #88c8bc;
+  overflow: hidden;
+  padding: 0 45px;
+  height: 50px;
+}
+
+.header-item {
+  overflow: hidden;
+  color: #fff;
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.icon-truck {
+  padding-right: 20px;
+}
+
+.form-buttons {
+  top: 30px;
+}
