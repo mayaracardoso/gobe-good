@@ -1,4 +1,6 @@
-import { LoginModule } from './modules/login/login.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { LoginModule } from './login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -9,8 +11,12 @@ import { HeaderComponent } from './shared/components-common/header/header.compon
 import { FooterComponent } from './shared/components-common/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { LayoutModule } from './modules/layout/layout.module';
+import { LayoutModule } from './layout/layout.module';
 import { FormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 @NgModule({
@@ -27,7 +33,11 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     LayoutModule,
     LoginModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase, 'goobe-good'),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    ShoppingCartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

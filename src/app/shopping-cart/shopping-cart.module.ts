@@ -8,6 +8,9 @@ import { ShoppingCartComponent } from './shopping-cart.component';
   declarations: [ShoppingCartComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ShoppingCartComponent
   ]
 })
 export class ShoppingCartModule { }
