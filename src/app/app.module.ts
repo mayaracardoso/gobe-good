@@ -26,7 +26,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     FooterComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
