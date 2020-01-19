@@ -1,3 +1,4 @@
+import { configFirebase } from './../environments/environment.firebase';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { LoginModule } from './login/login.module';
@@ -15,8 +16,8 @@ import { LayoutModule } from './layout/layout.module';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
-import { environment } from 'src/environments/environment';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import * as firebase from 'firebase';
+firebase.initializeApp(configFirebase); 
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     LayoutModule,
     LoginModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase, 'goobe-good'),
+    AngularFireModule.initializeApp(configFirebase, 'goobe-good'),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     ShoppingCartModule,
