@@ -1,11 +1,15 @@
 .cards {
-    display: flex; 
-    justify-content: space-between;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card {
+  width: 18rem;
 }
 
 .price {
-    color: #28af96;
-    font-size: 18px;
-    font-weight: 500;
+  color: #28af96;
+  font-size: 18px;
+  font-weight: 500;
 }

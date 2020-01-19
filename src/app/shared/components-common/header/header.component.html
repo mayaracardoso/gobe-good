@@ -34,6 +34,8 @@
                         <fa-icon class="header__icons" [icon]="faShoppingBag"></fa-icon>
                         <fa-icon class="header__icons" [icon]="faHeart"></fa-icon>
                         <fa-icon class="header__icons" [icon]="faUser"></fa-icon>
+                        {{user.name}}
+                        <button (click)="logout()">Logout</button>
                     </div>
                 </div>
             </div>
