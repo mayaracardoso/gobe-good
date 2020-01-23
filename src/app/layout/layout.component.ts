@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import 'firebase/storage'; 
 import { config } from 'rxjs';
 
 @Component({

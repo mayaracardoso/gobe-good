@@ -1,4 +1,4 @@
-import { LoginService } from './../../../login/login.service';
+import { LoginService } from '../../../user/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { faSearch, faShoppingBag, faUser, faPhoneAlt, faTruck, faMoneyBillAlt, faTag, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { switchMap, map } from 'rxjs/operators';

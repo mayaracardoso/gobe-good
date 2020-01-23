@@ -5,7 +5,7 @@ import 'firebase/auth';
 import { CanActivate, Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators'
 import { Observable } from 'rxjs';
-import { UserService } from './user.service';
+import { UserService } from '../../core/user.service';
 
 
 @Injectable({
@@ -27,7 +27,7 @@ export class LoginService implements CanActivate {
   }
 
   loginWithGoogle() {
-    return this.login.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    return this.login.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   logoutWithGoogle() {

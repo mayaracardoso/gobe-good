@@ -14,7 +14,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                             <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link" href="men.html">Roupas</a></li>
+                                <li class="nav-item"><a class="nav-link" routerLink="login">Roupas</a></li>
                                 <li class="nav-item"><a class="nav-link" href="women.html">Acessórios</a></li>
                                 <li class="nav-item"><a class="nav-link" href="about.html">Kids</a></li>
                             </ul>
@@ -34,7 +34,6 @@
                         <fa-icon class="header__icons" [icon]="faShoppingBag"></fa-icon>
                         <fa-icon class="header__icons" [icon]="faHeart"></fa-icon>
                         <fa-icon class="header__icons" [icon]="faUser"></fa-icon>
-                        {{user.name}}
                         <button (click)="logout()">Logout</button>
                     </div>
                 </div>

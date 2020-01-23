@@ -1,7 +1,7 @@
+import { UserModule } from './user/user.module';
 import { configFirebase } from './../environments/environment.firebase';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { LoginModule } from './login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -33,12 +33,12 @@ firebase.initializeApp(configFirebase);
     BrowserAnimationsModule,
     MatIconModule,
     LayoutModule,
-    LoginModule,
     FormsModule,
     AngularFireModule.initializeApp(configFirebase, 'goobe-good'),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     ShoppingCartModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
