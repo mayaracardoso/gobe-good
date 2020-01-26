@@ -8,10 +8,10 @@
                 </i> Login with Google
             </a>
             <div class="col">
-                <input type="email" class="form-control" name="username" placeholder="E-mail" required>
-                <input type="password" class="form-control" name="password" placeholder="Senha" required>
-                <input type="submit" id="submit" value="Fazer login">
-                <a href="#">Esqueci minha senha</a>
+                <input type="email" class="form-control" name="username" [(ngModel)]="user.email" placeholder="E-mail" required>
+                <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Senha" required>
+                <input type="submit" id="submit" (click)="onLoginEmailPassword(user.email, user.password)" value="Fazer login">
+                <input type="button" (click)="resetPassword(user.email)" value="Esqueci minha senha">
             </div>
         </div>
         <div class="login-box__footer">
