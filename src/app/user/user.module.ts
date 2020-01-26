@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserComponent } from './user.component';
@@ -13,10 +14,12 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     LoginComponent,
+    UserComponent
   ]
 })
 export class UserModule { }

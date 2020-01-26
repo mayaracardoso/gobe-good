@@ -4,25 +4,30 @@
             <h2>Crie sua conta</h2>
             <div class="input-container">
                 <i class="fa fa-user icon"></i>
-                <input class="input-field" type="text" placeholder="Nome" name="usrnm" required>
+                <input class="input-field" type="text" [(ngModel)]="user.name" placeholder="Nome" name="usrnm" required>
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                <input class="input-field" type="text" placeholder="Sobrenome"  [(ngModel)]="user.surname" name="usrnm" required>
             </div>
 
             <div class="input-container">
                 <i class="fa fa-envelope icon"></i>
-                <input class="input-field" type="email" placeholder="E-mail" name="email" required>
+                <input class="input-field" type="email" placeholder="E-mail" name="email"  [(ngModel)]="user.email" required>
             </div>
 
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                <input class="input-field" type="password" placeholder="Senha" name="psw" required>
+                <input class="input-field" type="password" placeholder="Senha" name="psw" [(ngModel)]="user.password" required>
             
             </div>
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                <input class="input-field" type="password" placeholder="Confirme a senha" name="psw" required>
+                <input class="input-field" type="password" placeholder="Confirme a senha" name="psw"  [(ngModel)]="confirmPassword" required>
             </div>
 
-            <button type="submit" class="btn">Criar conta</button>
+            <button type="submit" class="btn" (click)="registerEmailPassword(user.email, user.password)">Criar conta</button>
         </form>
     </div>
 </div>

@@ -1,4 +1,6 @@
+import { LoginService } from './login/login.service';
 import { Component, OnInit } from '@angular/core';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
+  user = new User();
+  confirmPassword: string;
 
   ngOnInit() {
   }
 
+  registerEmailPassword(email: string, password: string) {
+    this.confirmPassword === password ? this.loginService.register(email, password) : alert("A confirmação de senha está incorreta");
+  }
 }
