@@ -1,103 +1,40 @@
-.cart_section {
+img {
   width: 100%;
-  background: #ffffff;
-  padding-top: 68px;
-  padding-bottom: 100px;
-}
-.cart_bar {
-  width: 100%;
-  padding-bottom: 28px;
-  border-bottom: solid 1px #ededed;
-}
-.cart_bar_list {
-  display: block;
-}
-.cart_bar_list li {
-  font-family: "Open Sans", sans-serif;
-  width: 68px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #000000;
-  list-style: none;
-}
-.cart_bar_list li:first-child {
-  width: auto;
-}
-.cart_bar_list li:not(:first-child):not(:last-child) {
-  margin-right: 30px;
-}
-.item_list > *:first-child {
-  text-align: left;
-}
-.cart_items_list {
-  display: block;
-}
-.cart_item {
-  width: 100%;
-  height: 126px;
-  padding-top: 23px;
-  padding-bottom: 23px;
-  border-bottom: solid 1px #ededed;
-}
-.cart_item > div:not(:first-child) {
-  width: 68px;
-}
-.cart_item > div:not(:first-child):not(:last-child) {
-  margin-right: 30px;
-}
-.product {
   height: 100%;
+  position: absolute;
+  bottom: 0;
+  transform: scale(0.4);
+  left: 0;
 }
-.product_image {
-  width: 67px;
-  height: 75px;
+
+.table td,
+.table th {
+  padding: 3rem;
+  vertical-align: top;
+  border-bottom: 1px solid #dee2e6;
+  position: relative;
 }
-.product_image img {
-  max-width: 100%;
+
+thead th:first-child {
+  border-top: none;
 }
-.product_number {
-  width: 98px;
-  padding-left: 36px;
-  font-size: 18px;
-  font-weight: 300;
-  color: #4a4a4a;
+
+thead {
+  border-top: none;
+  padding: 3rem 2rem;
 }
-.product_name_container {
-  padding-left: 30px;
-}
-.product_name a {
-  font-size: 18px;
-  color: #4a4a4a;
+
+.table__title {
+  font-size: 20px;
   font-weight: 500;
 }
-.product_name a:hover {
-  color: #2fce98;
-}
-.product_text {
-  font-size: 14px;
-  font-weight: 400;
-  color: #4a4a4a;
-}
-.product_color {
-  text-transform: uppercase;
-}
-.product_price {
-  font-size: 16px !important;
-}
-.product_total {
-  font-size: 16px !important;
-  font-weight: 500 !important;
-}
-.product_text {
-  font-size: 14px;
-  font-weight: 300;
-  color: #4a4a4a;
-}
+
 .product_quantity {
-  width: 68px;
-  height: 32px;
-  border: solid 2px #969696;
-  border-radius: 3px;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  padding: 10px;
 }
 .product_quantity > span {
   line-height: 28px;
@@ -115,7 +52,6 @@
   transform: translateY(-50%);
   width: 22px;
   height: 100%;
-  // line-height: 28px;
   cursor: pointer;
   font-size: 16px;
   color: #414141;
@@ -134,24 +70,36 @@
 .qty_add {
   position: relative;
 }
-.qty_add {
-  position: relative;
-}
+
 .qty_add > span {
   position: absolute;
-  left: 45px;
-  bottom: 30px;
+  left: 64px;
+  bottom: 23px;
+  font-size: 20px;
 }
 
 .qty_sub > span {
-    left: 15px;
-    bottom: 2px;
-    position: absolute;
+  left: 4px;
+  bottom: 0px;
+  position: absolute;
+  font-size: 23px;
+  top: 0;
 }
 
 .product_text > span {
   display: none;
 }
+
+.product_price {
+  font-size: 24px;
+  color: #057b65;
+}
+
+.product-description {
+  font-size: 18px;
+  font-weight: 500;
+}
+
 .cart_buttons {
   margin-top: 30px;
 }
@@ -175,103 +123,7 @@
   text-transform: uppercase;
 }
 
-@media only screen and (max-height: 920px) {
-  .home_slider_dots_container {
-    display: none !important;
-  }
-}
-
-@media only screen and (max-width: 1780px) {
-  .search_input {
-    width: 310px;
-  }
-  .main_nav {
-    margin-left: 100px;
-  }
-}
-
-@media only screen and (max-width: 1600px) {
-  .search_input {
-    width: 210px;
-  }
-  .main_nav {
-    margin-left: 70px;
-  }
-  .main_nav ul li:not(:last-of-type) {
-    margin-right: 39px;
-  }
-  .header_search {
-    margin-right: 47px;
-  }
-}
-
-@media only screen and (max-width: 1440px) {
-  .main_nav {
-    display: none;
-  }
-  .header_phone > div:first-child > div {
-    width: 24px;
-    height: 24px;
-  }
-  .header_phone > div:last-child {
-    font-size: 16px;
-  }
-  .cart a > div {
-    width: 25px;
-    height: 25px;
-  }
-  .user a > div {
-    width: 26px;
-    height: 26px;
-  }
-  .user a > div > div {
-    width: 18px;
-    height: 18px;
-    font-size: 11px;
-    line-height: 18px;
-  }
-  .header_search {
-    margin-right: 39px;
-  }
-  .hamburger {
-    display: block;
-  }
-  .search_input {
-    width: 300px;
-  }
-}
-
-@media only screen and (max-width: 1199px) {
-  .products_bar_links ul li:not(:last-of-type) {
-    margin-right: 35px;
-  }
-}
-
 @media only screen and (max-width: 991px) {
-  .header_phone {
-    display: none !important;
-  }
-  .search_input {
-    width: 210px;
-  }
-  .home_item_side {
-    margin-top: 127px;
-  }
-  .header_content {
-    padding-right: 25px;
-  }
-  .cart {
-    margin-right: 0;
-  }
-  .cart_bar {
-    display: none;
-  }
-  .cart_item {
-    height: auto;
-  }
-  .cart_item > div:not(:first-child) {
-    width: auto;
-  }
   .product_text > span {
     display: inline-block;
     margin-right: 10px;
@@ -279,104 +131,5 @@
   .product_number {
     width: auto;
     padding-left: 0;
-  }
-  .product_image {
-    margin-top: 10px;
-  }
-  .product_name_container {
-    padding-left: 0;
-    margin-top: 15px;
-  }
-  .cart_item > div:not(:first-child) {
-    margin-top: 15px;
-  }
-
-  .footer_col:not(:last-child) {
-    margin-bottom: 30px;
-  }
-  .footer_content {
-    padding-bottom: 120px;
-  }
-  .footer_social {
-    margin-top: 100px;
-  }
-  .footer_nav ul li:not(:last-of-type) {
-    margin-right: 27px;
-  }
-  .copyright {
-    font-size: 14px;
-  }
-  .footer_nav ul li a {
-    font-size: 14px;
-  }
-  .footer_about {
-    padding-top: 100px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .header_search {
-    display: none;
-  }
-  .menu_search {
-    display: block;
-  }
-  .footer_bar_content {
-    height: auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-  .copyright {
-    margin-top: 10px;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  .header_content {
-    height: 59px;
-  }
-  .home {
-    padding-top: 59px;
-  }
-  .logo a > div > div:first-child {
-    width: 20px;
-    margin-top: -3px;
-  }
-  .logo a > div > div:last-child {
-    font-size: 16px;
-    padding-left: 10px;
-  }
-  .hamburger {
-    margin-top: 2px;
-  }
-  .hamburger i {
-    font-size: 20px;
-  }
-  .button {
-    height: 35px;
-  }
-  .button a {
-    font-size: 14px;
-    line-height: 35px;
-  }
-  .button:not(:last-child) {
-    margin-right: 15px;
-  }
-  .user a > div,
-  .cart a > div {
-    width: 24px;
-    height: 24px;
-  }
-  .footer_logo {
-    margin-left: 0;
-  }
-  .footer_title {
-    font-size: 30px;
-  }
-  .footer_list li a {
-    font-size: 16px;
-  }
-  .footer_list li a > div::after {
-    font-size: 10px;
   }
 }
