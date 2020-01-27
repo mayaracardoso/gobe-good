@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { take, map } from 'rxjs/operators'
+import { map, take } from 'rxjs/operators';
+
+import { Product } from '../shared/models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,34 +11,33 @@ export class ShoppingCartService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  async AddToCart(course) {
+  async addToCart(product: Product) {
     let cartId = localStorage.getItem('cartId');
     if (!cartId) {
       let cart = await this.db.list('/shoppingCart').push({
         dateCreated: new Date().getTime()
       });
       localStorage.setItem('cartId', cart.key)
-      this.AddCourseCart(cart.key, course)
+      this.addProductCart(cart.key, product)
+      alert('Adicionado ao carrinho')
     }
     else {
-      this.AddCourseCart(localStorage.getItem('cartId'), course);
+      this.addProductCart(localStorage.getItem('cartId'), product);
     }
   }
-  AddCourseCart(idCart, courseAdd) {
-    console.log('addCourse', courseAdd);
-    this.db.object('/shoppingCart/' + idCart + '/items/' + courseAdd.key)
+
+  addProductCart(idCart, productAdd) {
+    this.db.object('/shoppingCart/' + idCart + '/items/' + productAdd.key)
       .snapshotChanges()
       .pipe(
         take(1)
       ).subscribe(
-        courseCart => {
-          console.log(courseCart);
-          if (!courseCart.key) {
-            this.db.list('/shoppingCart/' + idCart + '/items/').set(courseAdd.key, { course: courseAdd })
+        productCart => {
+          console.log(productCart);
+          if (!productCart.key) {
+            this.db.list('/shoppingCart/' + idCart + '/items/').set(productAdd.key, { product: productAdd })
           }
-        }
-      )
-
+        })
   }
 
   getListItemsShoppingCart() {
@@ -44,38 +45,31 @@ export class ShoppingCartService {
     return this.db.list('/shoppingCart/' + cartId + '/items/')
       .snapshotChanges()
       .pipe(
-
-        map(courses =>
-          courses.map(c => (
+        map(products =>
+          products.map(c => (
             {
-
               key: c.payload.key, ...(c.payload.val() as any)
             }
           ))
         ))
-
-
   }
-  deleteCourseShoppingCart(id: string) {
+
+  deleteProductShoppingCart(id: string) {
     let cartId = localStorage.getItem('cartId');
     return this.db.object('/shoppingCart/' + cartId + '/items/' + id).remove();
   }
 
-  getListItemsShoppingCartMapCourses() {
+  getListItemsShoppingCartMapProducts() {
     let cartId = localStorage.getItem('cartId');
     return this.db.list('/shoppingCart/' + cartId + '/items/')
       .snapshotChanges()
       .pipe(
-
-        map(courses =>
-          courses.map(c => (
+        map(products =>
+          products.map(c => (
             {
-
-              key: c.payload.key, ...(c.payload.val() as any).course
+              key: c.payload.key, ...(c.payload.val() as any).products
             }
           ))
         ))
-
-
   }
 }
