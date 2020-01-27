@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <img class="product-img" src="./../../assets/img/camiseta-preta.png">
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <h1 class="description">{{ product.description }}</h1>
+            <h2 class="price">{{ product.price | currency:'BRL' }}</h2>
+            <span>ou em até 2x sem juros de R$15,00</span>
+            <div class="size__title">
+                <span>Escolha o tamaho disponível:</span>
+            </div>
+            <div class="size">
+                <span class="size__item">PP</span>
+                <span class="size__item">P</span>
+                <span class="size__item">M</span>
+                <span class="size__item">G</span>
+                <span class="size__item">GG</span>
+                <span class="size__item">XG</span>
+            </div>
+            <div class="measure">
+                <span class="measure__tip">Dúvidas sobre as medidas? Confira abaixo:</span><br>
+                <button type="button" class="btn btn-outline-dark btn-lg" (click)="showMeasureTable()"
+                    data-toggle="tooltip" data-placement="bottom">Tabela de medidas</button>
+                <div class="measure__table" *ngIf="isVisibleTable">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Tórax/busto</th>
+                                <th scope="col">Cintura</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">PP</th>
+                                <td>80 - 84</td>
+                                <td>70 - 74</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">P</th>
+                                <td>88 - 96</td>
+                                <td>78 - 86</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">M</th>
+                                <td>96 - 100</td>
+                                <td>86 - 90</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">G</th>
+                                <td>104 - 112</td>
+                                <td>94 - 100</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">GG</th>
+                                <td>114 - 118</td>
+                                <td>100 - 106</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">XG</th>
+                                <td>122 - 130</td>
+                                <td>110 - 118</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="delivery">
+                <span class="delivery__title">Calcular frete e prazo de entrega</span>
+                <div class="delivery__term">
+                    <form class="form-inline">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="00000-000" aria-label="CEP"
+                                aria-describedby="CEP do endereço para entrega">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">OK</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="buy">
+                    <button class="btn btn-outline-info btn-lg" type="button" (click)="addProductShoppingCart()">Adicionar ao carrinho</button>
+                    <button class="btn btn-info btn-lg" type="button">Comprar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

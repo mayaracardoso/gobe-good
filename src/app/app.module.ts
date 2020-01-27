@@ -1,3 +1,4 @@
+import { ProductDetailModule } from './product-detail/product-detail.module';
 import { UserModule } from './user/user.module';
 import { configFirebase } from './../environments/environment.firebase';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
@@ -38,7 +39,8 @@ firebase.initializeApp(configFirebase);
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     ShoppingCartModule,
-    UserModule
+    UserModule,
+    ProductDetailModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
