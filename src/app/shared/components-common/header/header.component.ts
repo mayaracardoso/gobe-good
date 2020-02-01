@@ -1,3 +1,4 @@
+import { ProductService } from './../../../core/product.service';
 import { LoginService } from '../../../user/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { faSearch, faShoppingBag, faUser, faPhoneAlt, faTruck, faMoneyBillAlt, faTag, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +10,10 @@ import { switchMap, map } from 'rxjs/operators';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private login: LoginService) { }
+  constructor(private login: LoginService, private productService: ProductService) { }
 
   user: any;
+  searchProduct: string;
 
   faSearch = faSearch;
   faShoppingBag = faShoppingBag;
@@ -41,6 +43,10 @@ export class HeaderComponent implements OnInit {
         else
           this.user = null;
       }, erreur => console.log)
+  }
+
+  getProducts(name: string) {
+    this.productService.getProductByName(name);
   }
 
   logout() {

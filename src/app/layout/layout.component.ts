@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import 'firebase/storage'; 
-import { config } from 'rxjs';
 
 @Component({
   selector: 'app-layout',
@@ -11,10 +10,11 @@ import { config } from 'rxjs';
 export class LayoutComponent implements OnInit {
 
   storage = firebase.storage();
-
+  searchResult = new Array<any>();
   constructor() { }
 
   ngOnInit() {
+    this.searchResult = JSON.parse(localStorage.getItem('searchResult'));
   }
   
   showimage() {

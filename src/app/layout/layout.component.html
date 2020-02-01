@@ -1,10 +1,22 @@
-<div class="container">  
+<div class="container">
+  <!-- <div class="cards" *ngFor="let item of searchResult"> -->
   <div class="cards">
+    <!-- <div class="card">
+      <img class="card-img-top" [src]="item.urlImage" alt="Imagem de capa do card">
+      <div class="card-body">
+        <span>{{ item.description | uppercase }}</span>
+        <span class="price">{{ item.price }}</span>
+      </div>
+    </div> -->
+
     <div class="card">
       <img class="card-img-top" src="../assets/img/camiseta-preta.png" alt="Imagem de capa do card">
       <div class="card-body">
-        <span>Camiseta preta básica</span>
+        <span>CAMISETA PRETA BÁSICA</span><br>
         <span class="price">R$ 29,99</span>
+      </div>
+      <div>
+        <button class="buy">comprar</button>
       </div>
     </div>
 
@@ -23,5 +35,6 @@
         <span class="price">R$ 35,99</span>
       </div>
     </div>
+
   </div>
 </div>

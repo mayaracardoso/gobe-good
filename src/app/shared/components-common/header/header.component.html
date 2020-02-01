@@ -24,8 +24,8 @@
                 <div class="col-sm-9 col-md-4 form-buttons">
                     <form action="#" class="search-wrap">
                         <div class="form-group">
-                            <input type="search" class="form-control search" placeholder="Busque por produtos">
-                            <button class="btn btn-primary submit-search text-center" type="submit">
+                            <input type="search" class="form-control search" placeholder="O que você está buscando?" [(ngModel)]="searchProduct" name="searchProduct">
+                            <button class="btn btn-primary submit-search text-center" type="submit" (click)="getProducts(searchProduct)">
                                 <fa-icon [icon]="faSearch"></fa-icon>
                             </button>
                         </div>

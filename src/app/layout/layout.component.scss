@@ -5,16 +5,36 @@
 }
 
 .card {
-  width: 18rem;
+  width: 20rem;
 }
 
 .card-body {
-  display: flex;
-  justify-content: space-between;
+  font-weight: bold;
 }
 
+.buy {
+  border: 1px solid #28af96;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 18px;
+  background: #fff;
+  color: #28af96;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1em;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px;
+  text-transform: uppercase;
+  padding: 15px 40px;
+}
+
+.buy:hover {
+  background: #28af96;
+  color: #fff;
+}
 .price {
   color: #28af96;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
 }
