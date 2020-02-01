@@ -1,0 +1,10 @@
+{
+    "/api/*": {
+        "target": "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/api": ""
+        }
+    }
+}
