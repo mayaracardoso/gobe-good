@@ -72,10 +72,11 @@
                     <form class="form-inline">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="00000-000" aria-label="CEP"
-                                aria-describedby="CEP do endereço para entrega">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">OK</button>
-                            </div>
+                                aria-describedby="CEP do endereço para entrega" [(ngModel)]="cep" name="cep">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" (click)="calculeShippin(cep)">OK</button>
+                                </div>
+                                {{cep}}
                         </div>
                     </form>
                 </div>
