@@ -12,8 +12,7 @@ export class ShoppingCartService {
   constructor(private db: AngularFireDatabase) { }
 
   async addToCart(product: Product) {
-    let cartId = localStorage.getItem('cartId');
-    if (!cartId) {
+    if (!localStorage.getItem('cartId')) {
       let cart = await this.db.list('/shoppingCart').push({
         dateCreated: new Date().getTime()
       });
@@ -26,8 +25,8 @@ export class ShoppingCartService {
     }
   }
 
-  addProductCart(idCart, productAdd) {
-    this.db.object('/shoppingCart/' + idCart + '/items/' + productAdd.key)
+  addProductCart(idCart, productAdd: Product) {
+    this.db.object('/shoppingCart/' + idCart + '/items/' + productAdd.id)
       .snapshotChanges()
       .pipe(
         take(1)
@@ -35,7 +34,7 @@ export class ShoppingCartService {
         productCart => {
           console.log(productCart);
           if (!productCart.key) {
-            this.db.list('/shoppingCart/' + idCart + '/items/').set(productAdd.key, { product: productAdd })
+            this.db.list('/shoppingCart/' + idCart + '/items/').set(productAdd.id, { product: productAdd })
           }
         })
   }
@@ -67,7 +66,7 @@ export class ShoppingCartService {
         map(products =>
           products.map(c => (
             {
-              key: c.payload.key, ...(c.payload.val() as any).products
+              key: c.payload.key, ...(c.payload.val() as any).product
             }
           ))
         ))

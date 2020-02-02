@@ -1,27 +1,53 @@
 <div class="container">
-	<table class="table table-hover">
+	<table class="table table-hover" *ngIf="products.length !== 0">
 		<thead>
 			<tr>
-				<th scope="col" class="table__title">Carrinho</th>
+				<th scope="col" colspan="2" class="table__title">{{ products.length }}
+					{{products.length === 1 ? 'peça' : 'peças'}} no seu carrinho</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+			<tr *ngFor="let product of products">
 				<th scope="row">
-					<img src="./../../assets/img/camiseta-preta.png" alt="Camiseta preta básica">
+					<img [src]="product.urlImage" [alt]="product.description">
 				</th>
 				<td>
-					<span class="product-description">Camiseta preta básica</span>
+					<div class="product-description"><span>{{ product.description }}</span></div>
+					<div class="product-size"><span>Tamanho: {{ product.size }}</span></div>
+					<button type="button" class="btn btn-link" (click)="deleteItem(product)">Remover do
+						carrinho</button>
+					<button type="button" class="btn btn-link">Comprar agora</button>
 				</td>
 				<td>
 					<div class="product_quantity text-center">
-						<span class="product_text product_num">1</span>
-						<div class="qty_sub qty_button text-center"><span>-</span></div>
-						<div class="qty_add qty_button text-center"><span>+</span></div>
+						<span class="product_text product_num">{{ itemQuantity }}</span>
+						<div class="qty_sub qty_button text-center" (click)="decrementQuantity()"><span>-</span></div>
+						<div class="qty_add qty_button text-center" (click)="incrementQuantity()"><span>+</span></div>
 					</div>
 				</td>
-				<td class="product_price">R$ 200,00</td>
+				<td class="product_price text-right">{{ product.price | currency:'BRL' }}</td>
+			</tr>
+			<tr>
+				<td colspan="4" class="text-right">
+					<div class="total">
+						<span>Total</span>
+						<span class="total__value">{{ sumTotal() | currency:'BRL' }}</span>
+					</div>
+				</td>
 			</tr>
 		</tbody>
 	</table>
+	<div class="button_buy" *ngIf="products.length !== 0">
+		<button type="button" class="btn btn-lg btn-info">Continuar compra</button>
+	</div>
+	<div class="jumbotron jumbotron-fluid" *ngIf="products.length === 0">
+		<div class="container empty-cart">
+			<fa-icon class="icon-cart" [icon]="faShoppingCart"></fa-icon>
+			<div>
+				<span>Seu carrinho está vazio :(</span>
+			</div>
+			<button type="button" class="btn btn-lg btn-info">Continue comprando</button>
+		</div>
+	</div>
+
 </div>

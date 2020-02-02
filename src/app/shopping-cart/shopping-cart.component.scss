@@ -24,6 +24,10 @@ thead {
   padding: 3rem 2rem;
 }
 
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
 .table__title {
   font-size: 20px;
   font-weight: 500;
@@ -45,10 +49,6 @@ thead {
 }
 .qty_button {
   position: relative;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 22px;
   height: 100%;
@@ -57,14 +57,15 @@ thead {
   color: #414141;
   bottom: 50%;
 }
-.qty_button span {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+// .qty_button span {
+//   -webkit-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+// }
 .qty_button:hover {
-  color: #bbe432;
+  color: #057b65;
+  cursor: pointer;
 }
 .qty_sub,
 .qty_add {
@@ -96,31 +97,52 @@ thead {
 }
 
 .product-description {
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 12px;
+}
+
+.product-size {
+  margin-left: 12px;
+  padding: 10px 0;
+}
+
+.jumbotron {
+  background-color: #fff;
+  box-shadow: 0 0 2px #dedfe0;
+}
+
+.empty-cart {
+  text-align: center;
+}
+
+.icon-cart {
+  font-size: 120px;
+  color: #ccc;
+}
+
+.btn-info {
+  background-color: #88c8bc;
+  color: #fff;
+  border-color: #88c8bc;
+  margin-top: 30px;
+}
+
+.total {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 24px;
   font-weight: 500;
 }
 
-.cart_buttons {
-  margin-top: 30px;
+.total__value {
+  padding-left: 30px;
 }
-.button {
-  height: 44px;
-  text-align: center;
-  margin-bottom: 10px;
-  border-radius: 3px;
-}
-.button:not(:last-child) {
-  margin-right: 21px;
-}
-.button a {
-  display: block;
-  line-height: 44px;
-  padding-left: 18px;
-  padding-right: 18px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  text-transform: uppercase;
+
+.button_buy {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 991px) {
