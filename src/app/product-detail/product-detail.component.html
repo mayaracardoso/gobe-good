@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-sm-12">
-            <img class="product-img" src="./../../assets/img/camiseta-preta.png">
+            <img class="product-img" [src]="product.urlImage">
         </div>
         <div class="col-md-6 col-sm-12">
             <h1 class="description">{{ product.description }}</h1>
@@ -10,13 +10,8 @@
             <div class="size__title">
                 <span>Escolha o tamaho disponível:</span>
             </div>
-            <div class="size">
-                <span class="size__item">PP</span>
-                <span class="size__item">P</span>
-                <span class="size__item">M</span>
-                <span class="size__item">G</span>
-                <span class="size__item">GG</span>
-                <span class="size__item">XG</span>
+            <div class="size" *ngFor="let size of sizes">
+                <button class="size__button" (click)="selectSize(size)">{{ size }}</button>
             </div>
             <div class="measure">
                 <span class="measure__tip">Dúvidas sobre as medidas? Confira abaixo:</span><br>

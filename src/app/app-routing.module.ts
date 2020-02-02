@@ -1,20 +1,28 @@
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './user/login/login.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'layout', pathMatch: 'full' },
   {
-    path: 'user',
+    path: '', component: LayoutComponent
+  },
+  {
+    path: 'product-detail', component: ProductDetailComponent,
+  },
+  {
+    path: 'user/login',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {
     path: 'carrinho',
     loadChildren: () => import('./shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule)
-  }
+  },
+  // {
+  //   path: 'product-detail',
+  //   loadChildren: () => import('./product-detail/product-detail.module').then(m => m.ProductDetailModule)
+  // }
 ];
 
 @NgModule({

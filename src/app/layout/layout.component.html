@@ -1,40 +1,41 @@
-<div class="container">
-  <!-- <div class="cards" *ngFor="let item of searchResult"> -->
-  <div class="cards">
-    <!-- <div class="card">
+<!-- <div class="cards" *ngFor="let item of searchResult"> -->
+<div class="cards">
+  <!-- <div class="card">
       <img class="card-img-top" [src]="item.urlImage" alt="Imagem de capa do card">
       <div class="card-body">
         <span>{{ item.description | uppercase }}</span>
         <span class="price">{{ item.price }}</span>
+         <div>
+      <button class="buy">comprar</button>
+    </div>
       </div>
     </div> -->
 
-    <div class="card">
-      <img class="card-img-top" src="../assets/img/camiseta-preta.png" alt="Imagem de capa do card">
-      <div class="card-body">
-        <span>CAMISETA PRETA BÁSICA</span><br>
-        <span class="price">R$ 29,99</span>
-      </div>
-      <div>
-        <button class="buy">comprar</button>
-      </div>
+  <div class="card">
+    <img class="card-img-top" src="../assets/img/camiseta-preta.png" alt="Imagem de capa do card">
+    <div class="card-body">
+      <span>CAMISETA PRETA BÁSICA</span><br>
+      <span class="price">R$ 29,99</span>
     </div>
-
-    <div class="card">
-      <img class="card-img-top" src="../assets/img/camiseta-branca.png" alt="Imagem de capa do card">
-      <div class="card-body">
-        <span class="card-text">Camiseta branca básica</span>
-        <span class="price">R$ 29,99</span>
-      </div>
+    <div>
+      <button class="buy" (click)="redirectTo()">comprar</button>
     </div>
-
-    <div class="card">
-      <img class="card-img-top" src="../assets/img/camiseta-fit.png" alt="Imagem de capa do card">
-      <div class="card-body">
-        <span class="card-text">Camiseta fit azul</span>
-        <span class="price">R$ 35,99</span>
-      </div>
-    </div>
-
   </div>
+
+  <div class="card">
+    <img class="card-img-top" src="../assets/img/camiseta-branca.png" alt="Imagem de capa do card">
+    <div class="card-body">
+      <span class="card-text">Camiseta branca básica</span>
+      <span class="price">R$ 29,99</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="card-img-top" src="../assets/img/camiseta-fit.png" alt="Imagem de capa do card">
+    <div class="card-body">
+      <span class="card-text">Camiseta fit azul</span>
+      <span class="price">R$ 35,99</span>
+    </div>
+  </div>
+
 </div>

@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnInit {
   product = new Product();
   isVisibleTable = false;
   cep: string;
+  sizes = new Array<string>();
 
   constructor(private productService: ProductService,
     private shoppingCart: ShoppingCartService,
@@ -24,8 +25,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sizes = ['PP', 'P', 'M', 'G', 'GG', 'XG'];
     let product = new Product();
-    product.id = '2';
+    product.id = '1';
     this.getInfoProduct(product);
   }
 
@@ -38,6 +40,11 @@ export class ProductDetailComponent implements OnInit {
 
   showMeasureTable() {
     this.isVisibleTable = !this.isVisibleTable;
+  }
+
+  selectSize(size: string) {
+    this.product.size = size;
+    console.log(this.product);
   }
 
   addProductShoppingCart() {

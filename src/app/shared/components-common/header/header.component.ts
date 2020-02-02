@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../../../core/shopping-cart.service';
 import { ProductService } from './../../../core/product.service';
 import { LoginService } from '../../../user/login/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,10 +11,11 @@ import { switchMap, map } from 'rxjs/operators';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private login: LoginService, private productService: ProductService) { }
+  constructor(private login: LoginService, private productService: ProductService, private shoppingCart: ShoppingCartService) { }
 
   user: any;
   searchProduct: string;
+  itemQuantity = 0;
 
   faSearch = faSearch;
   faShoppingBag = faShoppingBag;
@@ -26,6 +28,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.showCurrentUser();
+    this.getItemsCart();
   }
 
   showCurrentUser() {
@@ -47,6 +50,13 @@ export class HeaderComponent implements OnInit {
 
   getProducts(name: string) {
     this.productService.getProductByName(name);
+  }
+
+  getItemsCart() {
+    this.shoppingCart.getListItemsShoppingCartMapProducts()
+      .subscribe(res => {
+        this.itemQuantity = res.length;
+      })
   }
 
   logout() {
