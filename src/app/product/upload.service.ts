@@ -1,36 +1,38 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { UploadFile } from './upload-file';
 import * as firebase from 'firebase';
+
+import { UploadFile } from './upload-file';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
 
-  constructor(private afStorage: AngularFireStorage) { }
+  constructor(private afStorage: AngularFireStorage, private db: AngularFireDatabase) { }
 
-  private basePath:string = '/uploads';
-  // uploads: FirebaseListObservable<UploadFile[]>;
+  private basePath: string = '/produtos';
+  public uploadFile: UploadFile;
 
   pushUpload(upload: UploadFile) {
     let storageRef = firebase.storage().ref();
     let uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
+    console.log("uploadTask", uploadTask);
 
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot) =>  {
-        // upload in progress
+      (snapshot) => {
         upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
       },
       (error) => {
-        // upload failed
         console.log(error)
       },
       () => {
-        // upload success
-        upload.url = uploadTask.snapshot.downloadURL
-        upload.name = upload.file.name
-        // this.saveFileData(upload)
+        upload.name = upload.file.name;
+        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          upload.url = downloadURL;
+        });
+        this.uploadFile = upload;
       }
     );
   }

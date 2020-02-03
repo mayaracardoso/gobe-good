@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './products.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 
 
@@ -11,7 +12,8 @@ import { ProductsComponent } from './products.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    AngularFireStorageModule
   ]
 })
 export class ProductsModule { }
