@@ -25,16 +25,17 @@ export class ShoppingCartService {
     }
   }
 
-  addProductCart(idCart, productAdd: Product) {
-    this.db.object('/shoppingCart/' + idCart + '/items/' + productAdd.id)
+  addProductCart(idCart, productAdd) {
+    console.log("productAdd", productAdd);
+    this.db.object('/shoppingCart/' + idCart + '/items/' + productAdd.key)
       .snapshotChanges()
       .pipe(
         take(1)
       ).subscribe(
         productCart => {
-          console.log(productCart);
           if (!productCart.key) {
-            this.db.list('/shoppingCart/' + idCart + '/items/').set(productAdd.id, { product: productAdd })
+            productAdd.quantity = 1;
+            this.db.list('/shoppingCart/' + idCart + '/items/').set(productAdd.key, { product: productAdd })
           }
         })
   }

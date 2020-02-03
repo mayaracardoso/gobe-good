@@ -1,7 +1,9 @@
-import { ShoppingCartService } from './../core/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../shared/models/product.model';
+import { Router } from '@angular/router';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+import { Product } from '../shared/models/product.model';
+import { ShoppingCartService } from './../core/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,13 +14,14 @@ export class ShoppingCartComponent implements OnInit {
 
   products = new Array<Product>();
   faShoppingCart = faShoppingCart;
-  itemQuantity = 1;
   sumItems = 0;
+  productSelected = new Product();
 
-  constructor(private shoppingCart: ShoppingCartService) { }
+  constructor(private shoppingCart: ShoppingCartService, private router: Router) { }
 
   ngOnInit() {
     this.getItemsCart();
+    this.productSelected.quantity = 1;
   }
 
   getItemsCart() {
@@ -28,26 +31,30 @@ export class ShoppingCartComponent implements OnInit {
       })
   }
 
-  deleteItem(product: Product) {
-    this.shoppingCart.deleteProductShoppingCart(product.id);
+  deleteItem(product) {
+    this.shoppingCart.deleteProductShoppingCart(product.key);
   }
 
-  incrementQuantity() {
-    this.itemQuantity++;
+  incrementQuantity(product: Product) {
+    product.quantity++;
   }
 
-  decrementQuantity() {
-    if (this.itemQuantity >= 2) {
-      this.itemQuantity--;
+  decrementQuantity(product: Product) {
+    if (product.quantity >= 2) {
+      product.quantity--;
     }
   }
 
   sumTotal(): string {
     let sumItems = 0;
     this.products.forEach((item) => {
-      sumItems += (+item.price);
+      sumItems += (+item.price * item.quantity);
     });
     return sumItems.toFixed(2);
+  }
+
+  goToHome() {
+    this.router.navigate(['']);
   }
 
 }

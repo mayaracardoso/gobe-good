@@ -1,7 +1,7 @@
 import { ShoppingCartService } from './../../../core/shopping-cart.service';
 import { ProductService } from './../../../core/product.service';
 import { LoginService } from '../../../user/login/login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { faSearch, faShoppingBag, faUser, faPhoneAlt, faTruck, faMoneyBillAlt, faTag, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { switchMap, map } from 'rxjs/operators';
 
@@ -13,9 +13,12 @@ import { switchMap, map } from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
   constructor(private login: LoginService, private productService: ProductService, private shoppingCart: ShoppingCartService) { }
 
-  user: any;
+  @Output() searchResultOutput = new EventEmitter<boolean>();
+  
   searchProduct: string;
+  user: any;
   itemQuantity = 0;
+
 
   faSearch = faSearch;
   faShoppingBag = faShoppingBag;
@@ -45,11 +48,11 @@ export class HeaderComponent implements OnInit {
         if (user != 'e') this.user = user
         else
           this.user = null;
-      }, erreur => console.log)
+      }, error => console.error)
   }
 
   getProducts(name: string) {
-    this.productService.getProductByName(name);
+    this.productService.searchProducts(name);
   }
 
   getItemsCart() {
@@ -62,4 +65,5 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.login.logoutWithGoogle();
   }
+
 }

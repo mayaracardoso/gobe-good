@@ -11,7 +11,7 @@
                 <span>Escolha o tamaho disponível:</span>
             </div>
             <div class="size" *ngFor="let size of sizes">
-                <button class="size__button" (click)="selectSize(size)">{{ size }}</button>
+                <button (click)="selectSize(size)" [ngClass]="{'size__button': true, 'sizeSelected' : sizeSelected === size}">{{ size }}</button>
             </div>
             <div class="measure">
                 <span class="measure__tip">Dúvidas sobre as medidas? Confira abaixo:</span><br>
@@ -67,17 +67,16 @@
                     <form class="form-inline">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="00000-000" aria-label="CEP"
-                                aria-describedby="CEP do endereço para entrega" [(ngModel)]="cep" name="cep">
+                                aria-describedby="CEP do endereço para entrega" [(ngModel)]="cep" name="cep" required>
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" (click)="calculeShippin(cep)">OK</button>
+                                    <button class="btn btn-outline-secondary" type="button" (click)="calculeShippin(cep)" [disabled]="!cep">OK</button>
                                 </div>
-                                {{cep}}
                         </div>
                     </form>
                 </div>
                 <div class="buy">
-                    <button class="btn btn-outline-info btn-lg" type="button" (click)="addProductShoppingCart()">Adicionar ao carrinho</button>
-                    <button class="btn btn-info btn-lg" type="button">Comprar</button>
+                    <button class="btn btn-outline-info btn-lg" type="button" [disabled]="!sizeSelected" (click)="addProductShoppingCart()">Adicionar ao carrinho</button>
+                    <button class="btn btn-info btn-lg" type="button" [disabled]="!sizeSelected || !cep">Comprar</button>
                 </div>
 
             </div>

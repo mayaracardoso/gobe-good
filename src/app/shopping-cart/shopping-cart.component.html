@@ -17,15 +17,16 @@
 					<button type="button" class="btn btn-link" (click)="deleteItem(product)">Remover do
 						carrinho</button>
 					<button type="button" class="btn btn-link">Comprar agora</button>
+					
 				</td>
 				<td>
 					<div class="product_quantity text-center">
-						<span class="product_text product_num">{{ itemQuantity }}</span>
-						<div class="qty_sub qty_button text-center" (click)="decrementQuantity()"><span>-</span></div>
-						<div class="qty_add qty_button text-center" (click)="incrementQuantity()"><span>+</span></div>
+						<span class="product_text product_num">{{ product.quantity }}</span>
+						<div class="qty_sub qty_button text-center" (click)="decrementQuantity(product)"><span>-</span></div>
+						<div class="qty_add qty_button text-center" (click)="incrementQuantity(product)"><span>+</span></div>
 					</div>
 				</td>
-				<td class="product_price text-right">{{ product.price | currency:'BRL' }}</td>
+				<td class="product_price text-right">{{ product.price * product.quantity | currency:'BRL' }}</td>
 			</tr>
 			<tr>
 				<td colspan="4" class="text-right">
@@ -46,7 +47,7 @@
 			<div>
 				<span>Seu carrinho está vazio :(</span>
 			</div>
-			<button type="button" class="btn btn-lg btn-info">Continue comprando</button>
+			<button type="button" class="btn btn-lg btn-info" (click)="goToHome()">Continue comprando</button>
 		</div>
 	</div>
 

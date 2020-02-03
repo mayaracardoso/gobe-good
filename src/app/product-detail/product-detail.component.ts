@@ -18,24 +18,16 @@ export class ProductDetailComponent implements OnInit {
   isVisibleTable = false;
   cep: string;
   sizes = new Array<string>();
+  sizeSelected: string;
 
-  constructor(private productService: ProductService,
+  constructor(
     private shoppingCart: ShoppingCartService,
     private delivery: DeliveryService) {
   }
 
   ngOnInit() {
-    this.sizes = ['PP', 'P', 'M', 'G', 'GG', 'XG'];
-    let product = new Product();
-    product.id = '1';
-    this.getInfoProduct(product);
-  }
-
-  getInfoProduct(product: Product) {
-    this.productService.getProductbyId(product.id)
-      .subscribe(product => {
-        this.product = product;
-      });
+    this.product = JSON.parse(localStorage.getItem('productSelected'));
+    this.sizes = ['P', 'M', 'G', 'GG', 'XG'];
   }
 
   showMeasureTable() {
@@ -44,7 +36,7 @@ export class ProductDetailComponent implements OnInit {
 
   selectSize(size: string) {
     this.product.size = size;
-    console.log(this.product);
+    this.sizeSelected = size;
   }
 
   addProductShoppingCart() {
