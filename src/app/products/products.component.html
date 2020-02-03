@@ -1,0 +1,43 @@
+<form>
+    <div class="form-group row">
+        <label for="description" class="col-sm-3 col-form-label">Descrição da peça</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="description" placeholder="Ex.: camiseta básica"
+            minlength="4" maxlength="20" [(ngModel)]="product.description" name="description" required> 
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="categorie" class="col-sm-3 col-form-label">Categoria</label>
+        <div class="col-sm-6">
+            <select class="form-control" id="categorie" [(ngModel)]="product.categorie" name="categorie" required>
+                <option [value]="categorie.key" *ngFor="let categorie of categories">{{ categorie.label }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="price" class="col-sm-3 col-form-label">Preço</label>
+        <div class="col-sm-6">
+            <input type="number" class="form-control" id="price" placeholder="00,00" [(ngModel)]="product.price" name="categorie" pattern="(\d+\,\d{1,2})" mim="1" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="foto" class="col-sm-3 col-form-label">Upload de foto</label>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="foto" accept=".png,.jpg" required [(ngModel)]="image">
+                    <label class="custom-file-label" for="foto">Escolher arquivo</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Fazer upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-9 text-right">
+            <button type="submit" class="btn btn-primary">Cadastrar produto</button>
+        </div>
+    </div>
+</form>

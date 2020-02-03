@@ -5,4 +5,5 @@ export class Product {
     price: string;
     urlImage: string;
     size?: string;
+    quantity? = 0;
 }
