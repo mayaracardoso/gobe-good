@@ -40,12 +40,12 @@ export class LoginService implements CanActivate {
   }
 
   async loginWithEmailPassword(email: string, password: string) {
-    var result = await this.login.auth.signInWithEmailAndPassword(email, password)
+    const result = await this.login.auth.signInWithEmailAndPassword(email, password)
     // this.router.navigate(['admin/list']);
   }
 
   async register(email: string, password: string) {
-    var result = await this.login.auth.createUserWithEmailAndPassword(email, password)
+    const result = await this.login.auth.createUserWithEmailAndPassword(email, password)
     this.sendEmailVerification();
   }
 
