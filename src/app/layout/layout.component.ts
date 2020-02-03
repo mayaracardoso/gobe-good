@@ -1,7 +1,7 @@
+import { Product } from './../shared/models/product.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
-import 'firebase/storage';
+import { ProductService } from '../core/product.service';
 
 @Component({
   selector: 'app-layout',
@@ -10,28 +10,17 @@ import 'firebase/storage';
 })
 export class LayoutComponent implements OnInit {
 
-  storage = firebase.storage();
   searchResult = new Array<any>();
-  constructor(private router: Router) { }
+  constructor(private router: Router, private productService: ProductService) { }
 
   ngOnInit() {
-    this.searchResult = JSON.parse(localStorage.getItem('searchResult'));
+    this.productService.updateSearch.subscribe((res) => {
+       this.searchResult = res;
+    })
   }
 
-  // showimage() {
-  //   const storageRef = firebase.storage().ref();
-  //   const spaceRef = storageRef.child('produtos/camisa-branca.png');
-  //   spaceRef.getDownloadURL().then(function(url) {
-  //       const test = url;
-  //       alert(url);
-  //       document.querySelector('img').src = test;
-
-  //   }).catch(function(error) {
-
-  //   });
-  // }
-
-  redirectTo() {
+  redirectTo(product: Product) {
+    localStorage.setItem('productSelected', JSON.stringify(product));
     this.router.navigate(['/product-detail']);
   }
 }

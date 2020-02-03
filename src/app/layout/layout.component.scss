@@ -1,15 +1,18 @@
 .cards {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  display: inline-flex;
 }
 
 .card {
   width: 20rem;
+  margin: 0 20px;
 }
 
 .card-body {
   font-weight: bold;
+}
+
+.card-img-top {
+  height: 400px;
 }
 
 .buy {
