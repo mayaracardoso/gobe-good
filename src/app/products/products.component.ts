@@ -1,10 +1,8 @@
-import { UploadFile } from './../product/upload-file';
-import { AngularFireModule } from '@angular/fire';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../core/product.service';
-import { Product } from '../shared/models/product.model';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { UploadService } from '../product/upload.service';
+import { Product } from '../shared/models/product.model';
+import { UploadFile } from './../product/upload-file';
 
 @Component({
   selector: 'app-products',
@@ -32,7 +30,8 @@ export class ProductsComponent implements OnInit {
   }
 
   includeProduct() {
-    // this.productService.addProduct(this.product);
+    this.product.urlImage = this.upSvc.uploadFile.url;
+    this.productService.addProduct(this.product);
   }
 
   detectFiles(event) {
@@ -45,5 +44,16 @@ export class ProductsComponent implements OnInit {
     let file = this.selectedFiles.item(0);
     this.currentUpload = new UploadFile(file);
     this.upSvc.pushUpload(this.currentUpload);
+  }
+
+  disabledButton(): boolean {
+    if(!this.product.description ||
+      !this.product.categorie ||
+      !this.product.price || 
+      !this.selectedFiles){
+        return true;
+      } else {
+        return false;
+      }
   }
 }
