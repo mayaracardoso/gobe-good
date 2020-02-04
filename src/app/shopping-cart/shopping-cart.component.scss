@@ -57,12 +57,7 @@ thead {
   color: #414141;
   bottom: 50%;
 }
-// .qty_button span {
-//   -webkit-user-select: none;
-//   -moz-user-select: none;
-//   -ms-user-select: none;
-//   user-select: none;
-// }
+
 .qty_button:hover {
   color: #057b65;
   cursor: pointer;
@@ -146,7 +141,6 @@ thead {
 .button_buy {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 991px) {
