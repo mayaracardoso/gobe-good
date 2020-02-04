@@ -1,0 +1,40 @@
+.jumbotron {
+  background-color: rgba(233, 236, 239, 0.2);
+}
+
+.data-address {
+  margin-top: 50px;
+}
+
+hr {
+  margin-bottom: 2rem;
+}
+
+.jumbotron__icon {
+  text-align: center;
+}
+
+.icon-money {
+  font-size: 100px;
+}
+
+.img-order {
+  width: 15%;
+  border-radius: 50px;
+  margin-right: 20px;
+  padding: 8px;
+}
+
+.order-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#product-description {
+    font-weight: 500;
+}
+
+.total {
+    text-align: center;
+}

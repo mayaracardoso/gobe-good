@@ -57,4 +57,8 @@ export class ShoppingCartComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  goToOrder() {
+    this.router.navigate(['/order']);
+  }
+
 }

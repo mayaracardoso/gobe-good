@@ -39,7 +39,7 @@
 		</tbody>
 	</table>
 	<div class="button_buy" *ngIf="products.length !== 0">
-		<button type="button" class="btn btn-lg btn-info">Continuar compra</button>
+		<button type="button" class="btn btn-lg btn-info" (click)="goToOrder()">Continuar compra</button>
 	</div>
 	<div class="jumbotron jumbotron-fluid" *ngIf="products.length === 0">
 		<div class="container empty-cart">

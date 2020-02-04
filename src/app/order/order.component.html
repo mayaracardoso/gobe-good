@@ -1,0 +1,108 @@
+<div class="row justify-content-md-center">
+    <div class="jumbotron">
+        <h1 class="text-center">Resumo da compra</h1>
+        <!-- <div class="jumbotron__icon">
+            <fa-icon [icon]="faMoneyCheckAlt" class="icon-money"></fa-icon>
+        </div> -->
+        <div *ngFor="let product of productsOrder" class="order-detail">
+            <!-- <div> -->
+                <img [src]="product.urlImage" alt="Descrição do produto" class="img-order">
+            <!-- </div> -->
+            <div>
+                <span id="product-description">{{ product.description | uppercase }}</span><br>
+                <span>Tamanho: {{ product.size }}</span><br>
+                <span>Quantidade: {{ product.quantity }}</span><br>
+                <span>Total: {{ product.price * product.quantity  | currency:'BRL' }}</span>
+            </div>
+        </div>
+        <hr>
+        <h2 class="total">Você pagará: {{ sumTotal() | currency:'BRL' }}</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="row"></div>
+    <h2>Dados pessoais</h2>
+    <hr>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="fullName">Nome completo</label>
+                <input type="text" class="form-control" id="fullName" name="fullName" [(ngModel)]="user.name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cpf">CPF</label>
+                <input type="number" class="form-control" id="cpf" [(ngModel)]="order.customerInfo.cpf" name="cpf">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phone">Telefone</label>
+                <input type="number" class="form-control" id="phone" [(ngModel)]="order.customerInfo.phone"
+                    name="phone">
+            </div>
+        </div>
+        <h3 class="data-address">Endereço para entrega</h3>
+        <hr>
+        <div class="form-row">
+            <div class="input-group form-group col-md-3">
+                <input type="text" class="form-control" placeholder="CEP" aria-label="Example text with button addon"
+                    aria-describedby="button-addon1" [(ngModel)]="order.customerInfo.cep" name="cep">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon1"
+                        (click)="getAddressInfo(order.customerInfo.cep)">Buscar</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Endereço</label>
+            <input type="text" class="form-control" id="inputAddress" [(ngModel)]="order.customerInfo.address"
+                name="address">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="addressNumber">Número</label>
+                <input type="text" class="form-control" id="addressNumber"
+                    [(ngModel)]="order.customerInfo.addressNumber" name="addressNumber">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="addressComplement">Complemento</label>
+                <input type="text" class="form-control" id="addressComplement"
+                    [(ngModel)]="order.customerInfo.addressComplement" name="addressComplement">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="neighborhood">Bairro</label>
+                <input type="text" class="form-control" id="neighborhood" [(ngModel)]="order.customerInfo.neighborhood"
+                    name="neighborhood">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <label for="inputCity">Cidade</label>
+                <input type="text" class="form-control" id="inputCity" [(ngModel)]="order.customerInfo.city"
+                    name="city">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="inputEstado">Estado</label>
+                <select id="inputEstado" class="form-control" [(ngModel)]="order.customerInfo.UF" name="UF">
+                    <option selected>Escolher...</option>
+                    <option *ngFor="let estado of estados" [value]="estado.sigla">{{ estado.nome }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-5 offset-2">
+                <button type="reset" class="btn btn-outline-primary btn-lg" (click)="onCancel()">Cancelar</button>
+            </div>
+            <div class="form-group col-md-5">
+                <button type="submit" class="btn btn-primary btn-lg" (click)="onPay()"
+                    [disabled]="disabledButton()">Confirmar compra</button>
+            </div>
+        </div>
+    </form>
+
+</div>

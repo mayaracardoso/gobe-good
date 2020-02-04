@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Delivery } from './../shared/models/delivery.model';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from './../../environments/environment'
+import { EstadoBr } from '../order/models/estadosBR.model';
 
 @Injectable()
 export class DeliveryService {
@@ -31,4 +32,22 @@ export class DeliveryService {
       })
     );
   }
+
+  consultCep(cep: string): Observable<any> {
+    cep = cep.replace(/\D/g, '');
+
+    if (cep !== '') {
+      const validacep = /^[0-9]{8}$/;
+
+      if (validacep.test(cep)) {
+        return this.http.get(`//viacep.com.br/ws/${cep}/json`);
+      }
+    }
+    return of({});
+  }
+
+  getEstadosBr() {
+    return this.http.get<EstadoBr[]>('assets/data/estadosbr.json');
+  }
+
 }

@@ -72,4 +72,9 @@ export class ShoppingCartService {
           ))
         ))
   }
+
+  clearShpoppingCart() {
+    let cartId = localStorage.getItem('cartId');
+    this.db.object('/shoppingCart/' + cartId + '/items/').remove();
+  }
 }

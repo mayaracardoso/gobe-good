@@ -1,7 +1,8 @@
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { LayoutComponent } from './layout/layout.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { LayoutComponent } from './layout/layout.component';
+import { OrderComponent } from './order/order.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
 
 
@@ -14,6 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'products', component: ProductsComponent,
+  },
+  {
+    path: 'order', component: OrderComponent,
   },
   {
     path: 'user/login',
