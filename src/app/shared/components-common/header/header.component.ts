@@ -1,8 +1,9 @@
+import { Router } from '@angular/router';
 import { ShoppingCartService } from './../../../core/shopping-cart.service';
 import { ProductService } from './../../../core/product.service';
 import { LoginService } from '../../../user/login/login.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { faSearch, faShoppingBag, faUser, faPhoneAlt, faTruck, faMoneyBillAlt, faTag, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart, faUser, faPhoneAlt, faTruck, faMoneyBillAlt, faTag, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { switchMap, map } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +12,8 @@ import { switchMap, map } from 'rxjs/operators';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private login: LoginService, private productService: ProductService, private shoppingCart: ShoppingCartService) { }
+  constructor(private login: LoginService, private productService: ProductService, 
+    private shoppingCart: ShoppingCartService, private router: Router) { }
 
   @Output() searchResultOutput = new EventEmitter<boolean>();
   
@@ -21,13 +23,12 @@ export class HeaderComponent implements OnInit {
 
 
   faSearch = faSearch;
-  faShoppingBag = faShoppingBag;
+  faShoppingCart = faShoppingCart;
   faUser = faUser;
   faPhoneAlt = faPhoneAlt;
-  faTruck = faTruck;
+  faShoppingBag = faShoppingBag;
   faMoneyBillAlt = faMoneyBillAlt;
   faTag = faTag;
-  faHeart = faHeart;
 
   ngOnInit() {
     this.showCurrentUser();
@@ -64,6 +65,10 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.login.logoutWithGoogle();
+  }
+
+  onLogin() {
+    this.router.navigate(['/user/login'])
   }
 
 }

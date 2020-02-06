@@ -6,13 +6,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="./../../assets/img/carosel-01.png" alt="First slide">
+      <img class="d-block w-100" src="./../../assets/img/carosel-04.png" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="./../../assets/img/carosel-02.png" alt="Second slide">
+      <img class="d-block w-100" src="./../../assets/img/carosel-05.png" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="./../../assets/img/carosel-03.png" alt="Third slide">
+      <img class="d-block w-100" src="./../../assets/img/carosel-06.png" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -29,10 +29,14 @@
   <div class="card">
     <img class="card-img-top" [src]="item.urlImage" alt="Imagem de capa do card">
     <div class="card-body">
-      <span>{{ item.description | uppercase }}</span>
-      <span class="price">{{ item.price | currency:'BRL' }}</span>
+      <div class="text-center">
+        <span>{{ item.description | uppercase }}</span>
+      </div>
+      <div class="text-center">
+        <span class="price">{{ item.price | currency:'BRL' }}</span>
+      </div>
       <div>
-        <button class="buy" (click)="redirectTo(item)">comprar</button>
+        <button class="buy" (click)="redirectTo(item)">Comprar</button>
       </div>
     </div>
   </div>

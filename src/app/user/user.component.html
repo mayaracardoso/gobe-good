@@ -1,34 +1,33 @@
-<div class="container">
+<div class="row justify-content-md-center">
     <div class="form-register">
         <form class="form-controll">
-            <h2>Crie sua conta</h2>
+            <h1 class="form__title">Crie sua conta</h1>
+            <hr>
             <div class="input-container">
-                <i class="fa fa-user icon"></i>
-                <input class="input-field" type="text" [(ngModel)]="user.name" placeholder="Nome" name="usrnm" required>
+                <input class="input-field form-control" type="text" [(ngModel)]="user.name" placeholder="Nome completo"
+                    name="usrnm" required>
             </div>
 
             <div class="input-container">
-                <i class="fa fa-user icon"></i>
-                <input class="input-field" type="text" placeholder="Sobrenome"  [(ngModel)]="user.surname" name="usrnm" required>
+                <input class="input-field form-control" type="email" placeholder="E-mail" name="email"
+                    [(ngModel)]="user.email" required>
             </div>
 
             <div class="input-container">
-                <i class="fa fa-envelope icon"></i>
-                <input class="input-field" type="email" placeholder="E-mail" name="email"  [(ngModel)]="user.email" required>
-            </div>
-
-            <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                <input class="input-field" type="password" placeholder="Senha" name="psw" [(ngModel)]="user.password" required>
-            
+                <input class="input-field form-control" type="password" placeholder="Senha" name="psw"
+                    [(ngModel)]="user.password" required>
             </div>
             <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                <input class="input-field" type="password" placeholder="Confirme a senha" name="psw"  [(ngModel)]="confirmPassword" required>
+                <input
+                    [ngClass]="{'input-field': true, 'form-control': true, 'is-valid': confirmPassword === user.password && confirmPassword, 'is-invalid': confirmPassword !== user.password && confirmPassword }"
+                    type="password" placeholder="Confirme a senha" name="psw" [(ngModel)]="confirmPassword" required>
+                <span class="invalid-feedback" *ngIf="showMessage">Os campos de senha e confirmação não
+                    correspondem</span>
             </div>
-
-            <button type="submit" class="btn" (click)="registerEmailPassword(user.email, user.password)">Criar conta</button>
+            <div class="submit">
+                <button type="submit" class="btn btn-lg btn-dark"
+                    (click)="registerEmailPassword(user.email, user.password)">Criar conta</button>
+            </div>
         </form>
     </div>
 </div>
-

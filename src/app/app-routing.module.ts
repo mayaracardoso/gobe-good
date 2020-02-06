@@ -1,9 +1,13 @@
+import { SuccessOrderComponent } from './order/success-order/success-order.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { OrderComponent } from './order/order.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
+import { AuthGuard } from './core/guards/auth.guard.service';
 
 
 const routes: Routes = [
@@ -15,17 +19,26 @@ const routes: Routes = [
   },
   {
     path: 'products', component: ProductsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'order', component: OrderComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'user/login',
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    path: 'user/login', component: LoginComponent,
   },
   {
-    path: 'carrinho',
-    loadChildren: () => import('./shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule)
+    path: 'user/register', component: UserComponent,
+  },
+  {
+    path: 'success-order', component: SuccessOrderComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'shopping-cart',
+    loadChildren: () => import('./shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule),
+    canActivate: [AuthGuard]
   },
 ];
 

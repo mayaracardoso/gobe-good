@@ -4,9 +4,9 @@
             <img class="product-img" [src]="product.urlImage">
         </div>
         <div class="col-md-6 col-sm-12">
-            <h1 class="description">{{ product.description }}</h1>
+            <h1 class="description">{{ product.description | uppercase}}</h1>
             <h2 class="price">{{ product.price | currency:'BRL' }}</h2>
-            <span>ou em até 2x sem juros de R$15,00</span>
+            <span>Pague com boleto ou em até 10x sem juros no cartão de crédito</span>
             <div class="size__title">
                 <span>Escolha o tamaho disponível:</span>
             </div>
@@ -75,8 +75,8 @@
                     </form>
                 </div>
                 <div class="buy">
-                    <button class="btn btn-outline-info btn-lg" type="button" [disabled]="!sizeSelected" (click)="addProductShoppingCart()">Adicionar ao carrinho</button>
-                    <button class="btn btn-info btn-lg" type="button" [disabled]="!sizeSelected || !cep">Comprar</button>
+                    <button class="btn btn-outline-dark btn-lg" type="button" [disabled]="!sizeSelected" (click)="addProductShoppingCart()">Adicionar ao carrinho</button>
+                    <button class="btn btn-outline-dark btn-lg" id="button-by" type="button" [disabled]="!sizeSelected || !cep" (click)="goToOrder()">Comprar</button>
                 </div>
 
             </div>

@@ -1,13 +1,8 @@
 <div class="row justify-content-md-center">
     <div class="jumbotron">
-        <h1 class="text-center">Resumo da compra</h1>
-        <!-- <div class="jumbotron__icon">
-            <fa-icon [icon]="faMoneyCheckAlt" class="icon-money"></fa-icon>
-        </div> -->
+        <h1 class="jumbotron__title text-center">Resumo da compra</h1>
         <div *ngFor="let product of productsOrder" class="order-detail">
-            <!-- <div> -->
                 <img [src]="product.urlImage" alt="Descrição do produto" class="img-order">
-            <!-- </div> -->
             <div>
                 <span id="product-description">{{ product.description | uppercase }}</span><br>
                 <span>Tamanho: {{ product.size }}</span><br>
@@ -27,11 +22,11 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="fullName">Nome completo</label>
-                <input type="text" class="form-control" id="fullName" name="fullName" [(ngModel)]="user.name">
+                <input type="text" class="form-control" id="fullName" name="fullName" [(ngModel)]="user.name" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="cpf">CPF</label>
-                <input type="number" class="form-control" id="cpf" [(ngModel)]="order.customerInfo.cpf" name="cpf">
+                <input type="number" class="form-control" id="cpf" [(ngModel)]="order.customerInfo.cpf" name="cpf" required>
             </div>
         </div>
         <div class="form-row">
@@ -96,10 +91,10 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-5 offset-2">
-                <button type="reset" class="btn btn-outline-primary btn-lg" (click)="onCancel()">Cancelar</button>
+                <button type="reset" class="btn btn-outline-dark btn-lg" (click)="onCancel()">Cancelar</button>
             </div>
             <div class="form-group col-md-5">
-                <button type="submit" class="btn btn-primary btn-lg" (click)="onPay()"
+                <button type="submit" class="btn btn-dark btn-lg" (click)="onPay()"
                     [disabled]="disabledButton()">Confirmar compra</button>
             </div>
         </div>

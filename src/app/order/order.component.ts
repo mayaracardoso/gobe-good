@@ -24,16 +24,11 @@ export class OrderComponent implements OnInit {
     private loginService: LoginService, private router: Router, private orderService: OrderService) { }
 
   ngOnInit() {
-    this.getItemsShoppingCart();
     this.getCurrentUser();
     this.getEstadosBR();
     this.order.customerInfo.user = this.user;
-  }
-
-  getItemsShoppingCart() {
-    this.shoppingCart.getListItemsShoppingCartMapProducts().subscribe((res) => {
-      this.productsOrder = res;
-    });
+    this.productsOrder = JSON.parse(localStorage.getItem('item'));
+    console.log("producst", this.productsOrder);
   }
 
   getCurrentUser() {
@@ -76,13 +71,12 @@ export class OrderComponent implements OnInit {
       paid: true,
     }
     let orderResult: any = await this.orderService.createOrder(order);
-    console.log("Ordem de compra", orderResult);
     this.shoppingCart.clearShpoppingCart();
-    this.router.navigate(['', orderResult.key]);
+    this.router.navigate(['/success-order']);
   }
 
   onCancel() {
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 
   disabledButton() {

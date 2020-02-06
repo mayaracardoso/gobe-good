@@ -12,11 +12,32 @@ export class UserComponent implements OnInit {
   constructor(private loginService: LoginService) { }
   user = new User();
   confirmPassword: string;
+  showMessage = false;
 
   ngOnInit() {
   }
 
   registerEmailPassword(email: string, password: string) {
-    this.confirmPassword === password ? this.loginService.register(email, password) : alert("A confirmação de senha está incorreta");
+    if(!this.validatePasswordConfirmation()) {
+      this.showMessage = true;
+    } else {
+      this.loginService.register(email, password);
+    }
   }
+
+  validatePasswordConfirmation(): boolean {
+    if(this.confirmPassword === this.user.password) {
+      return true;
+    }
+  }
+
+  disabledButton(): boolean {
+    if(!this.user.name || !this.user.email || !this.user.password || !this.confirmPassword) {
+      return true;
+    }
+    return false;
+  }
+  
+
+
 }

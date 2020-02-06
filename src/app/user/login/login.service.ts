@@ -12,7 +12,7 @@ import { UserService } from '../../core/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService implements CanActivate {
+export class LoginService {
 
   user: User;
 
@@ -65,25 +65,13 @@ export class LoginService implements CanActivate {
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null;
+    if (this.user) {
+      return true;
+    }
   }
 
   getCurrentUser() {
     return this.login.authState;
-  }
-
-  canActivate(): Observable<boolean> {
-    return this.login.authState
-      .pipe(
-        map(user => {
-          if (user) return true
-          else {
-            this.router.navigate(['/login']);
-            return false;
-          }
-        })
-      )
   }
 
   getCurrentUserDb() {

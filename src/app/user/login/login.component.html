@@ -1,21 +1,20 @@
-<div class="container">
+<div class="row justify-content-md-center">
     <div class="login-box">
         <div class="login-box__header">
             Faça login em sua conta
         </div>
         <div class="login-box__content">
-            <a (click)="onLoginGoogle()" class="google btn"><i class="fa fa-google fa-fw">
-                </i> Login with Google
-            </a>
             <div class="col">
-                <input type="email" class="form-control" name="username" [(ngModel)]="user.email" placeholder="E-mail" required>
-                <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Senha" required>
-                <input type="submit" id="submit" (click)="onLoginEmailPassword(user.email, user.password)" value="Fazer login">
-                <input type="button" (click)="resetPassword(user.email)" value="Esqueci minha senha">
+                <input type="button"  (click)="onLoginGoogle()" class="google btn" value="Login com Google">
+                <input type="email" class="form-control user-input" name="username" [(ngModel)]="user.email" placeholder="E-mail" required>
+                <input type="password" class="form-control user-input" name="password" [(ngModel)]="user.password" placeholder="Senha" required>
+                <input type="button btn-login" (click)="onLoginEmailPassword(user.email, user.password)" value="Fazer login" class="btn btn-light">
+                <input type="button" (click)="resetPassword(user.email)" value="Esqueci minha senha" class="btn btn-lik">
             </div>
         </div>
         <div class="login-box__footer">
-            Não tem uma conta? <a href="#">Cadastre-se</a>
+            <span>Não tem uma conta?</span>
+            <button type="button" class="btn btn-link" (click)="goToRegisterUser()">Cadastre-se</button>
         </div>
     </div>
 </div>

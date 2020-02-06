@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-7 col-md-2">
-                    <img src="../../../assets/img/logo2.jpeg" alt="Logotipo" class="logo"  routerLink="/">
+                    <img src="../../../assets/img/logo2.jpeg" alt="Logotipo" class="logo" routerLink="/">
                 </div>
                 <div class="col-sm-7 col-md-6 menu">
                     <nav class="navbar navbar-expand-lg navbar-light">
@@ -14,9 +14,9 @@
                         </button>
                         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                             <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link" routerLink="">Roupas</a></li>
-                                <li class="nav-item"><a class="nav-link" href="women.html">Acessórios</a></li>
-                                <li class="nav-item"><a class="nav-link" href="about.html">Kids</a></li>
+                                <li class="nav-item"><a class="nav-link" routerLink="/products">Adulto</a></li>
+                                <li class="nav-item"><a class="nav-link" routerLink="/order">Kids</a></li>
+                                <li class="nav-item"><a class="nav-link" routerLink="/order">Contato</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -24,19 +24,33 @@
                 <div class="col-sm-9 col-md-4 form-buttons">
                     <form action="#" class="search-wrap">
                         <div class="form-group">
-                            <input type="search" class="form-control search" placeholder="O que você está buscando?" [(ngModel)]="searchProduct" name="searchProduct">
-                            <button class="btn btn-primary submit-search text-center" type="submit" (click)="getProducts(searchProduct)">
+                            <input type="search" class="form-control search" placeholder="O que você está buscando?"
+                                [(ngModel)]="searchProduct" name="searchProduct">
+                            <button class="btn btn-primary submit-search text-center" type="submit"
+                                (click)="getProducts(searchProduct)">
                                 <fa-icon [icon]="faSearch"></fa-icon>
                             </button>
                         </div>
                     </form>
                     <div class="icons">
                         <div>
-                            <fa-icon class="header__icons" [icon]="faShoppingBag" routerLink="/carrinho"></fa-icon>
-                            <span class="item-cart" *ngIf="itemQuantity > 0">{{ itemQuantity }}</span>
+                            <fa-icon class="header__icons" [icon]="faShoppingCart" routerLink="/shopping-cart">
+                            </fa-icon>
+                            <span class="item-cart" *ngIf="itemQuantity > 0 && user">{{ itemQuantity }}</span>
                         </div>
-                        <fa-icon class="header__icons" [icon]="faUser"></fa-icon>
-                        <button (click)="logout()">Logout</button>
+                        <div class="dropdown">
+                            <fa-icon class="header__icons dropdown-toggle" data-toggle="dropdown" [icon]="faUser"
+                                aria-haspopup="true" aria-expanded="false"></fa-icon>
+                            <span *ngIf="user" class="user-name">{{ user.name }}</span>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button" (click)="onLogin()" *ngIf="user === null"> Fazer login</button>
+                                <div *ngIf="user">
+                                    <button class="dropdown-item" type="button">Perfil</button>
+                                    <button class="dropdown-item" type="button">Minhas compras</button>
+                                    <button class="dropdown-item" type="button" (click)="logout()">Sair</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,8 +59,8 @@
             <div class="row header-info">
                 <div class="col-md-12 text-left text-lg-center">
                     <div class="header-item">
-                        <fa-icon [icon]="faTruck" class="icon-truck"></fa-icon>
-                        <span>Frete grátis nas compras acima de R$ 200,00</span>
+                        <fa-icon [icon]="faShoppingBag" class="icon-truck"></fa-icon>
+                        <span>Sem uso de embalagens plásticas na distribuição</span>
                     </div>
                 </div>
             </div>

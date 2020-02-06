@@ -1,5 +1,12 @@
 .jumbotron {
   background-color: rgba(233, 236, 239, 0.2);
+  padding: 20px 0;
+}
+
+.jumbotron__title {
+  color: #29303b;
+  font-weight: 600;
+  font-size: 30px;
 }
 
 .data-address {
@@ -8,14 +15,6 @@
 
 hr {
   margin-bottom: 2rem;
-}
-
-.jumbotron__icon {
-  text-align: center;
-}
-
-.icon-money {
-  font-size: 100px;
 }
 
 .img-order {
@@ -32,9 +31,48 @@ hr {
 }
 
 #product-description {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .total {
-    text-align: center;
+  text-align: center;
+  color: #18bc9c;
+}
+
+.btn-dark,
+.btn-dark:visited,
+.btn-dark:focus,
+.btn-dark:active,
+.btn-dark:focus {
+  background: #18bc9c;
+  color: #fff;
+  border: #18bc9c;
+}
+
+.btn-dark:hover {
+  color: #fff;
+  background-color: #149a80;
+  border-color: #128f76;
+}
+
+.btn-outline-dark:hover {
+  color: #fff;
+  background-color: #1e2b37;
+  border-color: #1a252f;
+}
+
+.btn-dark:disabled {
+  color: #fff;
+  background-color: #95a5a6;
+  border-color: #95a5a6;
+}
+
+.btn-outline-dark {
+  background: #fff;
+  border-color: #2c3e50;
+  color: #2c3e50;
+}
+
+.btn-lg {
+  width: 260px;
 }

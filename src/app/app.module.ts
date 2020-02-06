@@ -1,3 +1,4 @@
+import { SuccessOrderComponent } from './order/success-order/success-order.component';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -29,6 +30,7 @@ firebase.initializeApp(configFirebase);
     HeaderComponent,
     FooterComponent,
     OrderComponent,
+    SuccessOrderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

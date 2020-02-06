@@ -16,28 +16,29 @@
 }
 
 .buy {
-  border: 1px solid #28af96;
-  border-radius: 25px;
-  font-weight: 700;
+  border: 1px solid #2c3e50;
+  border-radius: 10px;
   font-size: 18px;
   background: #fff;
-  color: #28af96;
+  color: #2c3e50;
   letter-spacing: 1px;
   text-align: center;
   line-height: 1em;
   height: auto;
   display: block;
-  margin: 0 auto 15px;
-  text-transform: uppercase;
   padding: 15px 40px;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .buy:hover {
-  background: #28af96;
+  background: #2c3e50;
+  border: 1px solid #2c3e50;
   color: #fff;
 }
+
 .price {
-  color: #28af96;
+  color: #18bc9c;
   font-size: 24px;
   font-weight: 500;
 }

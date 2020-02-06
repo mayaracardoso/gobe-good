@@ -57,7 +57,14 @@ export class ShoppingCartComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  goToBuyItem(product: Product) {
+    let products = [];
+    localStorage.setItem('item', JSON.stringify(products))
+    this.router.navigate(['/order']);
+  }
+
   goToOrder() {
+    localStorage.setItem('item', JSON.stringify(this.products))
     this.router.navigate(['/order']);
   }
 

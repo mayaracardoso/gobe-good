@@ -16,7 +16,7 @@
 					<div class="product-size"><span>Tamanho: {{ product.size }}</span></div>
 					<button type="button" class="btn btn-link" (click)="deleteItem(product)">Remover do
 						carrinho</button>
-					<button type="button" class="btn btn-link">Comprar agora</button>
+					<button type="button" class="btn btn-link" (click)="goToBuyItem(product)">Comprar agora</button>
 					
 				</td>
 				<td>
@@ -39,7 +39,7 @@
 		</tbody>
 	</table>
 	<div class="button_buy" *ngIf="products.length !== 0">
-		<button type="button" class="btn btn-lg btn-info" (click)="goToOrder()">Continuar compra</button>
+		<button type="button" class="btn btn-lg btn-dark" (click)="goToOrder()">Continuar compra</button>
 	</div>
 	<div class="jumbotron jumbotron-fluid" *ngIf="products.length === 0">
 		<div class="container empty-cart">
@@ -47,7 +47,7 @@
 			<div>
 				<span>Seu carrinho está vazio :(</span>
 			</div>
-			<button type="button" class="btn btn-lg btn-info" (click)="goToHome()">Continue comprando</button>
+			<button type="button" class="btn btn-lg btn-dark" (click)="goToHome()">Continue comprando</button>
 		</div>
 	</div>
 
