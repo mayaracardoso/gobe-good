@@ -31,6 +31,7 @@ export class ProductsComponent implements OnInit {
 
   includeProduct() {
     this.product.urlImage = this.upSvc.uploadFile.url;
+    this.product.description = this.product.description.toLowerCase();
     this.productService.addProduct(this.product);
   }
 
