@@ -1,27 +1,32 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <img class="product-img" [src]="product.urlImage">
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <h1 class="description">{{ product.description | uppercase}}</h1>
-            <h2 class="price">{{ product.price | currency:'BRL' }}</h2>
-            <span>Pague com boleto ou em até 10x sem juros no cartão de crédito</span>
-            <div class="size__title">
-                <span>Escolha o tamaho disponível:</span>
-            </div>
-            <div class="size" *ngFor="let size of sizes">
-                <button (click)="selectSize(size)" [ngClass]="{'size__button': true, 'sizeSelected' : sizeSelected === size}">{{ size }}</button>
-            </div>
-            <div class="measure">
-                <span class="measure__tip">Dúvidas sobre as medidas? Confira abaixo:</span><br>
-                <button type="button" class="btn btn-outline-dark btn-lg" (click)="showMeasureTable()"
-                    data-toggle="tooltip" data-placement="bottom">Tabela de medidas</button>
-                <div class="measure__table" *ngIf="isVisibleTable">
-                    <table class="table">
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <img class="product-img" [src]="product.urlImage">
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <h1 class="description">{{ product.description | uppercase}}</h1>
+      <h3 class="price">{{ product.price | currency:'BRL' }}</h3>
+      <span>Pague com boleto ou em até 10 vezes sem juros no cartão de crédito</span>
+      <div class="size__title">
+        <span>Escolha o tamaho disponível:</span>
+      </div>
+      <div class="size">
+        <button (click)="selectSize('P')" [ngClass]="{'size__button': true, 'sizeSelected' : sizeSelected === 'P'}"
+          tabindex="0">P</button>
+        <button (click)="selectSize('M')" [ngClass]="{'size__button': true, 'sizeSelected' : sizeSelected === 'M'}"
+          tabindex="0">M</button>
+        <button (click)="selectSize('G')" [ngClass]="{'size__button': true, 'sizeSelected' : sizeSelected === 'G'}"
+          tabindex="0">G</button>
+      </div>
+      <div class="measure">
+        <span class="measure__tip">Dúvidas sobre as medidas? Confira abaixo:</span><br>
+        <!-- <button type="button" class="btn btn-outline-dark btn-lg" (click)="showMeasureTable()"
+                    data-toggle="tooltip" data-placement="bottom">Tabela de medidas</button> -->
+        <div class="measure__table">
+          <!-- <table class="table" aria-live="assertive" id="measeure__table-info">
                         <thead>
                             <tr>
-                                <th scope="col"></th>
+                                <th scope="col">Tamanho</th>
                                 <th scope="col">Tórax/busto</th>
                                 <th scope="col">Cintura</th>
                             </tr>
@@ -58,28 +63,33 @@
                                 <td>110 - 118</td>
                             </tr>
                         </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="delivery">
-                <span class="delivery__title">Calcular frete e prazo de entrega</span>
-                <div class="delivery__term">
-                    <form class="form-inline">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="00000-000" aria-label="CEP"
-                                aria-describedby="CEP do endereço para entrega" [(ngModel)]="cep" name="cep" required>
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" (click)="calculeShippin(cep)" [disabled]="!cep">OK</button>
-                                </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="buy">
-                    <button class="btn btn-outline-dark btn-lg" type="button" [disabled]="!sizeSelected" (click)="addProductShoppingCart()">Adicionar ao carrinho</button>
-                    <button class="btn btn-outline-dark btn-lg" id="button-by" type="button" [disabled]="!sizeSelected || !cep" (click)="goToOrder()">Comprar</button>
-                </div>
-
-            </div>
+                    </table> -->
         </div>
+      </div>
+      <div class="delivery">
+        <div class="delivery__term">
+          <form class="form-inline">
+            <div class="input-group mb-3">
+              <label class="delivery__title">Calcular frete e prazo de entrega</label>
+              <div class="input-group-append">
+                <input type="text" class="form-control" [(ngModel)]="cep" name="cep" id="cep_entrega" required>
+                <button class="btn btn-outline-secondary" type="button" (click)="calculeShippin(cep)" [disabled]="!cep"
+                  tabindex="1">OK</button>
+              </div>
+            </div>
+            <div>
+              <span *ngIf="deadline" id="deadline" tabindex="-1">Previsão de entrega: 5 dias úteis</span>
+            </div>
+          </form>
+        </div>
+        <div class="buy">
+          <button class="btn btn-outline-dark btn-lg" type="button" [disabled]="!sizeSelected"
+            (click)="addProductShoppingCart()">Adicionar ao carrinho</button>
+          <button class="btn btn-outline-dark btn-lg" id="button-by" type="button" [disabled]="!sizeSelected || !cep"
+            (click)="goToOrder()">Comprar</button>
+        </div>
+
+      </div>
     </div>
+  </div>
 </div>

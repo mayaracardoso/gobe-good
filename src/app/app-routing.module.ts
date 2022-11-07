@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'products', component: ProductsComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'order', component: OrderComponent,
@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     loadChildren: () => import('./shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
 ];
 

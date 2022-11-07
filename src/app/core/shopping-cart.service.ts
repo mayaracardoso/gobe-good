@@ -13,7 +13,7 @@ export class ShoppingCartService {
 
   async addToCart(product: Product) {
     if (!localStorage.getItem('cartId')) {
-      let cart = await this.db.list('/shoppingCart').push({
+      const cart = await this.db.list('/shoppingCart').push({
         dateCreated: new Date().getTime()
       });
       localStorage.setItem('cartId', cart.key)
@@ -41,7 +41,7 @@ export class ShoppingCartService {
   }
 
   getListItemsShoppingCart() {
-    let cartId = localStorage.getItem('cartId');
+    const cartId = localStorage.getItem('cartId');
     return this.db.list('/shoppingCart/' + cartId + '/items/')
       .snapshotChanges()
       .pipe(
@@ -55,12 +55,12 @@ export class ShoppingCartService {
   }
 
   deleteProductShoppingCart(id: string) {
-    let cartId = localStorage.getItem('cartId');
+    const cartId = localStorage.getItem('cartId');
     return this.db.object('/shoppingCart/' + cartId + '/items/' + id).remove();
   }
 
   getListItemsShoppingCartMapProducts() {
-    let cartId = localStorage.getItem('cartId');
+    const cartId = localStorage.getItem('cartId');
     return this.db.list('/shoppingCart/' + cartId + '/items/')
       .snapshotChanges()
       .pipe(
@@ -74,7 +74,7 @@ export class ShoppingCartService {
   }
 
   clearShpoppingCart() {
-    let cartId = localStorage.getItem('cartId');
+    const cartId = localStorage.getItem('cartId');
     this.db.object('/shoppingCart/' + cartId + '/items/').remove();
   }
 }

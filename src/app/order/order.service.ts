@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { tsNxLib } from 'nxlibts';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +11,7 @@ export class OrderService {
   constructor(private db: AngularFireDatabase) { }
 
   createOrder(order) {
+    tsNxLib()
     return this.db.list('/orders').push(order);
   }
 

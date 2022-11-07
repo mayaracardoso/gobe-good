@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShoppingCartService } from '../core/shopping-cart.service';
 import { DeliveryService } from './../core/delivery.service';
@@ -18,13 +18,14 @@ export class ProductDetailComponent implements OnInit {
   cep: string;
   sizes = new Array<string>();
   sizeSelected: string;
-
   products = [];
+  deadline = false;
 
   constructor(
     private shoppingCart: ShoppingCartService,
     private delivery: DeliveryService,
-    private router: Router) {
+    private router: Router,
+    private changeDetector: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -46,10 +47,14 @@ export class ProductDetailComponent implements OnInit {
   }
 
   calculeShippin(cep: string) {
-    let delivery = new Delivery();
+    const delivery = new Delivery();
     delivery.sCepDestino = cep;
+    this.deadline = true;
+    this.changeDetector.detectChanges();
+    const deadlineSpan = document.getElementById('deadline');
+    deadlineSpan.focus();
     this.delivery.getFrete(delivery).subscribe((res) => {
-      console.log('Res', res);
+      console.log(res);
     });
   }
 

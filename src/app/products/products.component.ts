@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit {
   }
 
   uploadSingle() {
-    let file = this.selectedFiles.item(0);
+    const file = this.selectedFiles.item(0);
     this.currentUpload = new UploadFile(file);
     this.upSvc.pushUpload(this.currentUpload);
   }
